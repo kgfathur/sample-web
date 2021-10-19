@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Sample Web - Caf&eacute;!</title>
-	<link rel="stylesheet" href="css/styles.css">
-</head>
+<?php
 
-<body class="bodyStyle">
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$ipAddress = $_SERVER['SERVER_ADDR'];
+$remoteAddress = $_SERVER['REMOTE_ADDR'];
+$instanceID = getenv('HOSTNAME'); 
+if(empty($instanceID)){
+  $instanceID = gethostname();
+}
+if(strpos($userAgent, 'curl') !== false){
+	$newLine = PHP_EOL;
+} else {
+	$newLine = "<br>";
+}
 
-	<div id="header" class="mainHeader">
-		<hr>
-		<div class="center">Sample Web Server</div>
-	</div>
-	<br>
-	<?php
-		// Display the server metadata information if the showServerInfo parameter is true.
-		include('serverInfo.php');
-	?>
-	<hr>
-	<div class="topnav">
-		<a href="index.php">Home</a>
-		<a href="aboutUs.php">About Us</a>
-		<a href="contactUs.php">Contact Us</a>
-		<a href="menu.php">Menu</a>
-		<a href="orderHistory.php">Order History</a>
-	</div>
-	<hr>
-	<div class="center">
-		<h3>Home</h3>
-	</div>
-	<hr>
-</body>
-</html>
+print 'Client Address: ' . $remoteAddress . $newLine;
+print 'Server Address: ' . $ipAddress . $newLine;
+print 'Server Hostname: ' . $instanceID . $newLine;
+print 'Agent: ' . $userAgent . $newLine;
+?>
