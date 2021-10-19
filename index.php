@@ -16,5 +16,4 @@ if(strpos($userAgent, 'curl') !== false){
 print 'Client Address: ' . $remoteAddress . $newLine;
 print 'Server Address: ' . $ipAddress . $newLine;
 print 'Server Hostname: ' . $instanceID . $newLine;
-print 'Agent: ' . $userAgent . $newLine;
 ?>
