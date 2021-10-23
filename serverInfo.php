@@ -8,8 +8,10 @@ if ($showServerInfo == 'true') {
 	// $instanceID = file_get_contents('http://169.254.169.254/latest/meta-data/instance-id');
 	$ipAddress = $_SERVER['SERVER_ADDR'];
 	$remoteAddress = $_SERVER['REMOTE_ADDR'];
-	// $instanceID = gethostname();
-	$instanceID = getenv('HOSTNAME'); 
+	$instanceID = getenv('HOSTNAME');
+  if(empty($instanceID)){
+    $instanceID = gethostname();
+  }
 
 	// Display instance metadata.
 	
